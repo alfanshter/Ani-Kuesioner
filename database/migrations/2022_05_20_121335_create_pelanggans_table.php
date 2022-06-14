@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        //jika status 1 maka pelanggan sudah mengisi kuisioner
         Schema::create('pelanggans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pelanggan');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->date('tgl_lahir');
             $table->string('tempat_lahir', 25);
             $table->text('alamat');
+            $table->integer('is_status')->default(0);
             $table->timestamps();
         });
     }

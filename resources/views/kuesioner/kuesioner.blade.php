@@ -24,78 +24,158 @@
      <div class="col-12 grid-margin">
          <div class="card">
              <div class="card-body">
-                 <h4 class="card-title">
-                     Produk
-                 </h4>
-                 <div>
-                     <p>1. Cistik Resep Eyang dapat memberikan menu produk dengan cita rasa yang enak</p>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q1" id="q1_r1" value="r2">
-                         <label class="form-check-label-quiz" for="q1_r1">
-                             Sangat Setuju
-                         </label>
-                     </div>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q1" id="q1_r2" value="r2">
-                         <label class="form-check-label-quiz" for="q1_r2">
-                             Setuju
-                         </label>
-                     </div>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q1" id="q1_r3" value="r3">
-                         <label class="form-check-label-quiz" for="q1_r3">
-                             Normal
-                         </label>
-                     </div>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q1" id="q1_r4" value="r3">
-                         <label class="form-check-label-quiz" for="q1_r3">
-                             Tidak Setuju
-                         </label>
-                     </div>
 
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q1" id="q1_r5" value="r3">
-                         <label class="form-check-label-quiz" for="q1_r3">
-                             Sangat Tidak Setuju
-                         </label>
-                     </div>
-                 </div>
-                 <div style="margin-top: 1rem">
-                     <p>2. Cistik Resep Eyang menyajikan produk makanan cemilan yang baru atau fresh produksi</p>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q2" id="q2_r1" value="r2">
-                         <label class="form-check-label-quiz" for="q1_r1">
-                             Sangat Setuju
-                         </label>
-                     </div>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q2" id="q2_r2" value="r2">
-                         <label class="form-check-label-quiz" for="q1_r2">
-                             Setuju
-                         </label>
-                     </div>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q2" id="q2_r3" value="r3">
-                         <label class="form-check-label-quiz" for="q1_r3">
-                             Normal
-                         </label>
-                     </div>
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q2" id="q2_r4" value="r3">
-                         <label class="form-check-label-quiz" for="q1_r3">
-                             Tidak Setuju
-                         </label>
-                     </div>
+                 <form action="/jawaban_pelanggan" method="post">
+                     <h4 class="card-title">
+                         Produk
+                     </h4>
+                     @csrf
+                     @foreach ($produk as $produks)
+                     <div style="margin-top: 1rem">
+                         <p>{{$loop->iteration}}. {{$produks->pertanyaan}}</p>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$produks->id}}]" value="{{$produks->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$produks->id}}]" id="q1_r1" value="5">
+                             <label class="form-check-label-quiz" for="q1_r1">
+                                 Sangat Setuju
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$produks->id}}]" value="{{$produks->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$produks->id}}]" id="q1_r2" value="4">
+                             <label class="form-check-label-quiz" for="q1_r2">
+                                 Setuju
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$produks->id}}]" value="{{$produks->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$produks->id}}]" id="q1_r3" value="3">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Normal
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$produks->id}}]" value="{{$produks->id}}">
 
-                     <div class="form-check-quiz">
-                         <input class="form-check-input" type="radio" name="q2" id="q2_r5" value="r3">
-                         <label class="form-check-label-quiz" for="q1_r3">
-                             Sangat Tidak Setuju
-                         </label>
-                     </div>
-                 </div>
+                             <input class="form-check-input" type="radio" required name="jawab[{{$produks->id}}]" id="q1_r4" value="2">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Tidak Setuju
+                             </label>
+                         </div>
 
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$produks->id}}]" value="{{$produks->id}}">
+
+                             <input class="form-check-input" type="radio" required name="jawab[{{$produks->id}}]" id="q1_r5" value="1">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Sangat Tidak Setuju
+                             </label>
+                         </div>
+                     </div>
+                     @endforeach
+                     <br><br>
+
+                        <h4 class="card-title">
+                         Kepuasan Pelanggan
+                     </h4>
+                     @csrf
+                     @foreach ($kepuasan_pelanggan as $kepuasan_pelanggans)
+                     <div style="margin-top: 1rem">
+                         <p>{{$loop->iteration}}. {{$kepuasan_pelanggans->pertanyaan}}</p>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$kepuasan_pelanggans->id}}]" value="{{$kepuasan_pelanggans->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$kepuasan_pelanggans->id}}]" id="q1_r1" value="5">
+                             <label class="form-check-label-quiz" for="q1_r1">
+                                 Sangat Setuju
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$kepuasan_pelanggans->id}}]" value="{{$kepuasan_pelanggans->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$kepuasan_pelanggans->id}}]" id="q1_r2" value="4">
+                             <label class="form-check-label-quiz" for="q1_r2">
+                                 Setuju
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$kepuasan_pelanggans->id}}]" value="{{$kepuasan_pelanggans->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$kepuasan_pelanggans->id}}]" id="q1_r3" value="3">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Normal
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$kepuasan_pelanggans->id}}]" value="{{$kepuasan_pelanggans->id}}">
+
+                             <input class="form-check-input" type="radio" required name="jawab[{{$kepuasan_pelanggans->id}}]" id="q1_r4" value="2">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Tidak Setuju
+                             </label>
+                         </div>
+
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$kepuasan_pelanggans->id}}]" value="{{$kepuasan_pelanggans->id}}">
+
+                             <input class="form-check-input" type="radio" required name="jawab[{{$kepuasan_pelanggans->id}}]" id="q1_r5" value="1">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Sangat Tidak Setuju
+                             </label>
+                         </div>
+                     </div>
+                     @endforeach
+                     <br><br>
+
+
+                        <h4 class="card-title">
+                         Pelayanan
+                     </h4>
+                     @csrf
+                     @foreach ($pelayanan as $pelayanans)
+                     <div style="margin-top: 1rem">
+                         <p>{{$loop->iteration}}. {{$pelayanans->pertanyaan}}</p>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$pelayanans->id}}]" value="{{$pelayanans->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$pelayanans->id}}]" id="q1_r1" value="5">
+                             <label class="form-check-label-quiz" for="q1_r1">
+                                 Sangat Setuju
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$pelayanans->id}}]" value="{{$pelayanans->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$pelayanans->id}}]" id="q1_r2" value="4">
+                             <label class="form-check-label-quiz" for="q1_r2">
+                                 Setuju
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$pelayanans->id}}]" value="{{$pelayanans->id}}">
+                             <input class="form-check-input" type="radio" required name="jawab[{{$pelayanans->id}}]" id="q1_r3" value="3">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Normal
+                             </label>
+                         </div>
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$pelayanans->id}}]" value="{{$pelayanans->id}}">
+
+                             <input class="form-check-input" type="radio" required name="jawab[{{$pelayanans->id}}]" id="q1_r4" value="2">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Tidak Setuju
+                             </label>
+                         </div>
+
+                         <div class="form-check-quiz">
+                             <input type="hidden" name="soal[{{$pelayanans->id}}]" value="{{$pelayanans->id}}">
+
+                             <input class="form-check-input" type="radio" required name="jawab[{{$pelayanans->id}}]" id="q1_r5" value="1">
+                             <label class="form-check-label-quiz" for="q1_r3">
+                                 Sangat Tidak Setuju
+                             </label>
+                         </div>
+                     </div>
+                     @endforeach
+                     <br><br>
+
+                     <button class="btn btn-primary">Submit</button>
+                 </form>
 
              </div>
          </div>

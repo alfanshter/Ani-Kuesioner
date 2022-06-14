@@ -9,4 +9,9 @@ class Pelanggan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class, 'pelanggan_id', 'id_pelanggan');
+    }
 }

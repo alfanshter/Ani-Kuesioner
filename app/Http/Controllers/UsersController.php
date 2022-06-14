@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Complaint;
+use App\Models\Jawaban;
+use App\Models\Kuesioner;
 use App\Models\Pelanggan;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +16,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        return view('dashboard.dashboard');
+        return view('landingpage.index');
     }
 
     public function login_view()
@@ -41,7 +44,7 @@ class UsersController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         }
 
         return back()->with('loginError', 'Login Gagal');
@@ -54,7 +57,7 @@ class UsersController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 
     //pendaftaran untuk admin

@@ -5,9 +5,9 @@
                     class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
                 >
                     <a class="navbar-brand brand-logo" href="/"
-                        ><span class="mdi mdi-wallet-membership">Survey Ani</span></a>
+                        ><span class="mdi mdi-wallet-membership">Cistik Resep Eyang</span></a>
                     <a class="navbar-brand brand-logo-mini" href="index.html"
-                        ><img src="assets/images/logo-mini.svg" alt="logo"
+                        ><img src="{{asset('assets/images/logo-mini.svg')}}" alt="logo"
                     /></a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -29,7 +29,7 @@
                             >
                                 <div class="nav-profile-img">
                                     <img
-                                        src="assets/images/faces/face1.jpg"
+                                        src="{{asset('assets/images/faces/face1.jpg')}}"
                                         alt="image"
                                     />
                                     <span
@@ -44,6 +44,9 @@
                                         @if (auth()->user()->role ==0)
                                         {{auth()->user()->admin->email}}
                                         @endif
+                                         @if (auth()->user()->role ==2)
+                                        {{auth()->user()->pemilik->email}}
+                                        @endif
                                     </p>
                                 </div>
                             </a>
@@ -51,12 +54,35 @@
                                 class="dropdown-menu navbar-dropdown"
                                 aria-labelledby="profileDropdown"
                             >
-                                <a class="dropdown-item" href="#">
+                            @if (auth()->user()->role == 0)
+                                <a class="dropdown-item" href="/profil_admin">
                                     <i
                                         class="mdi mdi-cached me-2 text-success"
                                     ></i>
                                     Profil
                                 </a>
+                                
+                            @endif
+
+                            @if (auth()->user()->role == 1)
+                                <a class="dropdown-item" href="/profil_pelanggan">
+                                    <i
+                                        class="mdi mdi-cached me-2 text-success"
+                                    ></i>
+                                    Profil
+                                </a>
+                                
+                            @endif
+
+                            @if (auth()->user()->role == 2)
+                                <a class="dropdown-item" href="/profil_pemilik">
+                                    <i
+                                        class="mdi mdi-cached me-2 text-success"
+                                    ></i>
+                                    Profil
+                                </a>
+                                
+                            @endif
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout">
                                     <i
@@ -66,6 +92,12 @@
                                 </a>
                             </div>
                         </li>
+                        </li>
+                          <li class="nav-item d-none d-lg-block full-screen-link">
+                            <a href="/unduh_grafik" class="btn btn-gradient-primary btn-icon-text align-self-end">
+                            <i class="mdi mdi-file-check btn-icon-prepend"></i> Unduh </a>
+                        </li>
+
                         <li class="nav-item d-none d-lg-block full-screen-link">
                             <a class="nav-link">
                                 <i
@@ -73,9 +105,8 @@
                                     id="fullscreen-button"
                                 ></i>
                             </a>
-                        </li>
                       
-                                           <li class="nav-item nav-settings d-none d-lg-block">
+                        <li class="nav-item nav-settings d-none d-lg-block">
                             <a class="nav-link" href="#">
                                 <i class="mdi mdi-format-line-spacing"></i>
                             </a>

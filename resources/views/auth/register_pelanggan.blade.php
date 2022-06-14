@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -30,6 +30,11 @@
                             <div class="brand-logo">
                                 <img src="../../assets/images/logo.svg">
                             </div>
+                             @error('username')
+                 <div class="alert alert-danger mt-2" role="alert">
+                     {{$message}}
+                 </div>
+                 @enderror
                             <h4>Akun Baru Pelanggan?</h4>
                             <h6 class="font-weight-light">Silahkan isi formulir berikut</h6>
                             <form action="/register" method="POST" class="pt-3">
