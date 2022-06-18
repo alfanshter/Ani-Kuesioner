@@ -43,7 +43,7 @@
                      Responden Kuesioner
                      <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                  </h4>
-                 <h2 class="mb-5">{{$jumlah_responden}}</h2>
+                 <h2 class="mb-5">{{$jumlah_reponden_total}}</h2>
                  <h6 class="card-text">
                      Total Responden Kuesioner
                  </h6>
@@ -92,11 +92,6 @@
                  
                  <canvas id="traffic-chart"></canvas>
                  <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
-                 <center>
-                    <a href="/unduh_grafik" class="btn btn-gradient-primary btn-icon-text align-self-end">
-                    <i class="mdi mdi-file-check btn-icon-prepend"></i> Unduh </a>
-
-                 </center>
 
              </div>
          </div>
@@ -338,7 +333,7 @@
     
         // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: [
-          'Puas',
+          'Puas ',
           'Tidak Puas '
                   ]
       };

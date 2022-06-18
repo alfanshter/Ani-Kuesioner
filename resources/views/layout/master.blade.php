@@ -70,7 +70,7 @@
                         >
                             <span
                                 class="text-muted d-block text-center text-sm-start d-sm-inline-block"
-                                >Copyright © kuesioner</span
+                                >kuesioner cistik resep eyang</span
                             >
                             <span--
                                 class="float-none float-sm-end mt-1 mt-sm-0 text-end"

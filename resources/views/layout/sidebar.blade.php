@@ -68,7 +68,7 @@
               </a>
               <div class="collapse" id="ui-basic2">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="/kuesioner_admin">Buat Kuesioner</a></li>
+                  {{--<li class="nav-item"> <a class="nav-link" href="/kuesioner_admin">Buat Kuesioner</a></li>--}}
                   <li class="nav-item"> <a class="nav-link" href="/hasil_kuesioner_admin">Hasil Kuesioner</a></li>
                 </ul>
               </div>

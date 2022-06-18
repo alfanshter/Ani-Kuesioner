@@ -184,6 +184,7 @@ class DashboardController extends Controller
         $jumlah_user = Pelanggan::count('id');
         $jumlah_responden = Jawaban::count('id');
         $jumlah_complaint = Complaint::count('id');
+        $jumlah_reponden_total = Pelanggan::where('is_status', 1)->count();
         return view(
             'dashboard.dashboard',
             [
@@ -223,7 +224,8 @@ class DashboardController extends Controller
                 'pelayanan_sts' => $pelayanan_sts,
                 'jumlah_user' => $jumlah_user,
                 'jumlah_responden' => $jumlah_responden,
-                'jumlah_complaint' => $jumlah_complaint
+                'jumlah_complaint' => $jumlah_complaint,
+                'jumlah_reponden_total' => $jumlah_reponden_total
             ]
         );
     }

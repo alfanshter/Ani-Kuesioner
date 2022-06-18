@@ -35,9 +35,10 @@
                         <div class="col-lg-4 mx-auto">
                             <div class="auth-form-light text-left p-5">
                                 <div class="brand-logo">
-                                    <img src="../../assets/images/logo.svg" />
+                                    <img src="{{asset('landingpage/img/logo.png')}}"  style="width: 300px"/>
                                 </div>
-                                <h4>Hello! let's get started</h4>
+
+                                <h4 class="txt txt-primary">Hello! let's get started</h4>
                                 <h6 class="font-weight-light">
                                     Sign in to continue.
                                 </h6>
